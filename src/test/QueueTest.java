@@ -20,6 +20,11 @@ public class QueueTest {
 		assertNotNull(queueClass);
 	}
 
+	@Test(expected = QueueClass.QueueException.class)
+	public void popFromEmptyQueue_thenReturnException() throws Exception {
+		queueClass.pop();
+	}
+
 	@Test
 	public void assertSizeOfQueueIsZero() throws Exception {
 		assertThat(queueClass.getQueueSize(), is(0));
