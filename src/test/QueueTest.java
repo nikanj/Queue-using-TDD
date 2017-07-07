@@ -44,4 +44,10 @@ public class QueueTest {
 
 		assertThat(queueClass.getQueueSize(), is(0));
 	}
+
+	@Test(expected = QueueClass.QueueException.class)
+	public void pushMoreThanQueueSize_thenReturnException() throws Exception {
+		for (int i = 0; i < 15; i++)
+			queueClass.push(i);
+	}
 }
