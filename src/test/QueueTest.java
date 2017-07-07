@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -6,13 +7,21 @@ import static org.junit.Assert.assertNotNull;
 
 public class QueueTest {
 
+	private QueueClass queueClass;
+
+	@Before
+	public void setUp() throws Exception {
+		queueClass = new QueueClass();
+
+	}
+
 	@Test
 	public void createQueueClass() {
-		assertNotNull(new QueueClass());
+		assertNotNull(queueClass);
 	}
 
 	@Test
 	public void assertSizeOfQueueIsZero() throws Exception {
-		assertThat(new QueueClass().getQueueSize(), is(0));
+		assertThat(queueClass.getQueueSize(), is(0));
 	}
 }
