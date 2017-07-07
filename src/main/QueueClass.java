@@ -8,7 +8,7 @@ public class QueueClass {
 
 	public void push(final int element) {
 
-		if (queueSize > FULL_QUEUE_SIZE) {
+		if (queueIsFull()) {
 			throw new QueueException();
 		}
 
@@ -17,15 +17,23 @@ public class QueueClass {
 		queueSize++;
 	}
 
+	private boolean queueIsFull() {
+		return queueSize == FULL_QUEUE_SIZE;
+	}
+
 	public int pop() {
 
-		if (queueSize == 0) {
+		if (queueIsEmpty()) {
 			throw new QueueException();
 		}
 
 		queueSize--;
 
 		return elements[tailPointer++];
+	}
+
+	private boolean queueIsEmpty() {
+		return queueSize == 0;
 	}
 
 	public int getQueueSize() {
