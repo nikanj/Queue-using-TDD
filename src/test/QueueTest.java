@@ -47,7 +47,11 @@ public class QueueTest {
 
 	@Test(expected = QueueClass.QueueException.class)
 	public void pushMoreThanQueueSize_thenReturnException() throws Exception {
-		for (int i = 0; i < 15; i++)
+		pushElementsInQueue(15);
+	}
+
+	private void pushElementsInQueue(final int numberOfElements) {
+		for (int i = 0; i < numberOfElements; i++)
 			queueClass.push(i);
 	}
 
@@ -65,5 +69,16 @@ public class QueueTest {
 
 		assertThat(queueClass.pop(), is(99));
 		assertThat(queueClass.pop(), is(100));
+	}
+
+	@Test
+	public void push5Elements_thenPop2Elements_andPush6More() throws Exception {
+		pushElementsInQueue(5);
+		queueClass.pop();
+		queueClass.pop();
+
+		pushElementsInQueue(6);
+
+		assertThat(queueClass.getQueueSize(), is(9));
 	}
 }
