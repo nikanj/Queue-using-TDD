@@ -2,6 +2,7 @@ public class QueueClass {
 
 	private int queueSize = 0;
 	private static int FULL_QUEUE_SIZE = 10;
+	private int elements [] = new int[FULL_QUEUE_SIZE];
 
 	public int getQueueSize() {
 		return queueSize;
@@ -13,15 +14,20 @@ public class QueueClass {
 			throw new QueueException();
 		}
 
+		elements[0] = i;
+
 		queueSize++;
 	}
 
-	public void pop() {
+	public int pop() {
+
 		if (queueSize == 0) {
 			throw new QueueException();
 		}
 
 		queueSize--;
+
+		return elements[0];
 	}
 
 	public static class QueueException extends RuntimeException {

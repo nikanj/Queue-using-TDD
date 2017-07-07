@@ -2,8 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class QueueTest {
 
@@ -49,5 +49,12 @@ public class QueueTest {
 	public void pushMoreThanQueueSize_thenReturnException() throws Exception {
 		for (int i = 0; i < 15; i++)
 			queueClass.push(i);
+	}
+
+	@Test
+	public void pushXToQueue_PopFromQueue_andTheElementIsTheSame() throws Exception {
+		queueClass.push(99);
+
+		assertThat(queueClass.pop(), is(99));
 	}
 }
