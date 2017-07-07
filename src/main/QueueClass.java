@@ -22,6 +22,8 @@ public class QueueClass {
 		queueSize++;
 	}
 
+	//Even if the function is a single line it is okay. It specifies one responsibility.
+	//Clean Code principle
 	private boolean queueIsFull() {
 		return queueSize == FULL_QUEUE_SIZE;
 	}
