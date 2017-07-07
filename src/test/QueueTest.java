@@ -57,4 +57,13 @@ public class QueueTest {
 
 		assertThat(queueClass.pop(), is(99));
 	}
+
+	@Test
+	public void pushXThenYToQueue_PopXThenY() throws Exception {
+		queueClass.push(99);
+		queueClass.push(100);
+
+		assertThat(queueClass.pop(), is(99));
+		assertThat(queueClass.pop(), is(100));
+	}
 }
