@@ -24,4 +24,11 @@ public class QueueTest {
 	public void assertSizeOfQueueIsZero() throws Exception {
 		assertThat(queueClass.getQueueSize(), is(0));
 	}
+
+	@Test
+	public void pushToQueue_andCheckSizeOfQueueIsOne() throws Exception {
+		queueClass.push(1);
+
+		assertThat(queueClass.getQueueSize(), is(1));
+	}
 }
