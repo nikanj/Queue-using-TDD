@@ -81,4 +81,14 @@ public class QueueTest {
 
 		assertThat(queueClass.getQueueSize(), is(9));
 	}
+
+	@Test
+	public void pushFullQueue_thenPopFullQueue_thenHeadAndTailPointersAreAtTheBeginning() throws Exception {
+		pushElementsInQueue(10);
+		for (int i = 0; i < 10 ; i++)
+			queueClass.pop();
+
+		assertThat(queueClass.getHeadPointer(), is(0));
+		assertThat(queueClass.getTailPointer(), is(0));
+	}
 }

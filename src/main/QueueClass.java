@@ -14,11 +14,20 @@ public class QueueClass {
 
 		elements[headPointer] = element;
 		headPointer++;
+
+		if (ifHeadPointerHasReachedEndOfQueue()) {
+			headPointer = 0;
+		}
+
 		queueSize++;
 	}
 
 	private boolean queueIsFull() {
 		return queueSize == FULL_QUEUE_SIZE;
+	}
+
+	private boolean ifHeadPointerHasReachedEndOfQueue() {
+		return headPointer == FULL_QUEUE_SIZE;
 	}
 
 	public int pop() {
@@ -29,6 +38,11 @@ public class QueueClass {
 
 		queueSize--;
 
+		if (ifTailPointerHasReachedEndOfQueue()) {
+			tailPointer = 0;
+			return elements[FULL_QUEUE_SIZE - 1];
+		}
+
 		return elements[tailPointer++];
 	}
 
@@ -36,8 +50,20 @@ public class QueueClass {
 		return queueSize == 0;
 	}
 
+	private boolean ifTailPointerHasReachedEndOfQueue() {
+		return tailPointer == FULL_QUEUE_SIZE - 1;
+	}
+
 	public int getQueueSize() {
 		return queueSize;
+	}
+
+	public int getHeadPointer() {
+		return headPointer;
+	}
+
+	public int getTailPointer() {
+		return tailPointer;
 	}
 
 	public static class QueueException extends RuntimeException {
