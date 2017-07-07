@@ -11,7 +11,11 @@ public class QueueClass {
 	}
 
 	public void pop() {
-		throw new QueueException();
+		if (queueSize == 0) {
+			throw new QueueException();
+		}
+
+		queueSize--;
 	}
 
 	public static class QueueException extends RuntimeException {

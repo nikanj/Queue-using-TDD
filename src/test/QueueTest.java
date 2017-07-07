@@ -36,4 +36,12 @@ public class QueueTest {
 
 		assertThat(queueClass.getQueueSize(), is(1));
 	}
+
+	@Test
+	public void pushToQueue_thenPopFromQueue_SizeIsZero() throws Exception {
+		queueClass.push(1);
+		queueClass.pop();
+
+		assertThat(queueClass.getQueueSize(), is(0));
+	}
 }
